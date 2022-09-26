@@ -1,13 +1,11 @@
 import logging
 from datetime import date
-import fastapi
-import uvicorn
-from fastapi import FastAPI
+from flask import Flask, request
 from platform import system
 import holidays
 
 
-app = FastAPI()
+app = Flask(__name__)
 
 
 def path():
@@ -40,7 +38,7 @@ def holiday():
     :return: dict
     """
     brazil_holidays = holidays.Brazil(years=date.today().year)
-    log_creator(fastapi.Response())
+    log_creator(request)
     days = []
     for holiday, name in brazil_holidays.items():
         days.append(str(holiday) + "T" + "03:06:28.000Z")
@@ -49,4 +47,4 @@ def holiday():
 
 
 if __name__ == '__main__':
-    uvicorn.run(port=33333, host="127.0.0.1", debug=False)
+    app.run(port=5000, host='0.0.0.0')
