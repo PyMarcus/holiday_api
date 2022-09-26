@@ -32,7 +32,7 @@ def log_creator(text):
     logging.info(text)
 
 
-@app.get('/holiday')
+@app.get('/')
 def holiday():
     """
     Quando solicitado, retorna o dia e o mes
