@@ -32,7 +32,7 @@ def log_creator(text):
     logging.info(text)
 
 
-@app.get('/')
+@app.get('/holiday')
 def holiday():
     """
     Quando solicitado, retorna o dia e o mes
@@ -40,11 +40,11 @@ def holiday():
     :return: dict
     """
     brazil_holidays = holidays.Brazil(years=date.today().year)
-    #log_creator(fastapi.Response())
+    log_creator(fastapi.Response())
     days = []
     for holiday, name in brazil_holidays.items():
         days.append(str(holiday) + "T" + "03:06:28.000Z")
-    #log_creator(days)
+    log_creator(days)
     return days
 
 
